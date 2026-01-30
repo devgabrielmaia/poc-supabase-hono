@@ -19,4 +19,9 @@ app.get('/products', async (c: Context) => {
   return c.json(data)
 })
 
+app.onError((err, c) => {
+  console.error(`${err}`)
+  return c.text('Custom Error Message', 500)
+})
+
 Deno.serve(app.fetch)
